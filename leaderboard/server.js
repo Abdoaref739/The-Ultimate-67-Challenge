@@ -9,23 +9,26 @@ let username;
 
 app.post("/", (req, res) =>{
     score = req.body.score;
-    name = req.body.name
+    name = req.body.username
     console.log(req.body)
     res.json({
         message: "Received!",
         username: req.body.username,
         score: score
     });
-
+    let player = leaderboard.find(p => p.username === username);
+    if(player){
+        player.score = score;
+    }else if(!player){
     leaderboard.push({name: req.body.username, score: score});
-    console.log(req.body)
+    }
 });
 
 
 
 app.get("/leaderboard", (req, res) =>{
     console.log("Leaderboard called");
-    res.json(leaderboard);
+    res.json(leaderboard)
 })
 
 //server start

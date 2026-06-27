@@ -25,6 +25,7 @@
     </div>
     <div class="login-options">
     <button class="signin-button">Sign in first</button>
+    <h2 id="welcome-text"></h2>
     </div>
 
     <script>
@@ -51,17 +52,14 @@
         let signInBtn = document.querySelector(".signin-button");
         let signInContainer = document.querySelector(".signin-container");
         let sendNameBtn = document.getElementById("send-name-button");
+        btn.disabled = true;
+
         signInBtn.addEventListener("click", () =>{
             signedIn = true;
+            btn.disabled = false;
             signInContainer.style.display = "block";
             localStorage.setItem("signedIn", true);
         })
-        let nameInput = document.getElementById("name-input");
-        name = nameInput.value;
-        sendNameBtn.addEventListener("click", () =>{
-            localStorage.setItem("Name", name)
-            signInContainer.style.display = "none";
-        });
 
 
         async function getData(){
@@ -71,16 +69,48 @@
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
-                    username: name,
+                    username: localStorage.getItem("name"),
                     score: score
                 })
 
             })
-            const data = await response.json();
+            data = await response.json();
             console.log(data)
-            console.log(name)
         }
         getData();
+
+
+        let nameInput = document.getElementById("name-input");
+        let welcomeText = document.getElementById("welcome-text");
+        let data;
+        sendNameBtn.addEventListener("click", () =>{
+            name = nameInput.value;
+
+            if(data && data.username == nameInput.value){
+                alert("This name is already in use!")
+            }
+            if(data && data.username !== nameInput.value && nameInput.value !== ""){
+                localStorage.setItem("name", name)
+                signInBtn.innerHTML = "Signed!";
+                signInBtn.disabled = true;
+                signInBtn.style.display = "none";
+                signInContainer.style.display = "none";
+                welcomeText.innerHTML = `Welcome, ${name}`;
+
+            }
+        });
+        let storedName = localStorage.getItem("name");
+        if(storedName){
+            signInBtn.disabled = true;
+            welcomeText.innerHTML = `Welcome, ${name}`;
+            btn.disabled = false;
+        }else{
+            signInBtn.style.display = "block";
+            welcomeText.style.display = "none";
+            signInBtn.disabled = false;
+            sendNameBtn.style.display = "block";
+
+        }
     </script>
 </body>
 </html>

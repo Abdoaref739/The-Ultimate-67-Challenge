@@ -70,6 +70,7 @@ body{
     font-family: "TextFont", sans-serif;
 }
 .login-box > button{
+    display: none;
     width: 50%;
     height: fit-content;
     background-color: transparent;
