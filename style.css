@@ -1,0 +1,50 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+@font-face {
+    font-family: "TextFont";
+    src: url("./Street\ Dash.ttf");
+}
+@font-face {
+    font-family: "TextFont2";
+    src: url("./Super\ Warming.ttf");
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: aliceblue;
+}
+div{
+    display: flex;
+    flex-direction: column;
+    margin-top: 140px;
+}
+p{
+    font-size: 30px;
+    font-family: "TextFont";
+}
+h2{
+    font-size: 80px;
+    font-family: "TextFont2", sans-serif;
+}
+.year-span{
+    font-size: 90px;
+    font-family: "TextFont";
+    margin-left: 80%;
+}
+button{
+    width: 30%;
+    height: 55px;
+    background-color: aliceblue;
+    border: 3px solid black;
+    box-shadow: 0px 5px 0 black;
+    border-radius: 15px;
+    color: black;
+    font-size: 30px;
+    font-family: "TextFont", sans-serif;
+    cursor: pointer;
+    margin-top: 20px;
+}
