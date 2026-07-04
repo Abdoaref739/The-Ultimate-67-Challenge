@@ -8,7 +8,7 @@ let leaderboard = [];
 
 app.post("/", (req, res) =>{
     const score = req.body.score;
-    const name = req.body.username
+    const username = req.body.username
     console.log(req.body)
     res.json({
         message: "Received!",
@@ -19,7 +19,7 @@ app.post("/", (req, res) =>{
     if(player){
         player.score = score;
     }else if(!player){
-    leaderboard.push({username: req.body.username, score: score});
+    leaderboard.push({username: req.body.username, score: req.body.score});
     }
 });
 

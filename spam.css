@@ -90,14 +90,18 @@ body{
     transition: 0.7s ease;
 }
 
-
+#welcome-text{
+    font-size: 30px;
+    font-family: "TextFont", sans-serif;
+    margin-top: 20px;
+}
 .signin-button{
-    position: absolute;
     width: fit-content;
     height: fit-content;
-    font-size: 28px;
+    width: 200px;
+    font-size: 30px;
     margin-top: 55px;
-    margin-left: 20px;
+    margin-left: 60%;
     padding: 10px;
     font-family: "TextFont", sans-serif;
     border: 3px solid black;
