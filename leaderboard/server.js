@@ -4,23 +4,22 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 let leaderboard = [];
-let score;
-let username;
+
 
 app.post("/", (req, res) =>{
-    score = req.body.score;
-    name = req.body.username
+    const score = req.body.score;
+    const name = req.body.username
     console.log(req.body)
     res.json({
         message: "Received!",
         username: req.body.username,
-        score: score
+        score: req.body.score
     });
     let player = leaderboard.find(p => p.username === username);
     if(player){
         player.score = score;
     }else if(!player){
-    leaderboard.push({name: req.body.username, score: score});
+    leaderboard.push({username: req.body.username, score: score});
     }
 });
 
