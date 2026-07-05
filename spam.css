@@ -234,14 +234,40 @@ body{
     background-color: orange;
     font-family: "TextFont3", sans-serif;
 }
-@media screen and (max-width: 950px){
+@media screen and (max-width: 750px){
     .main-container{
         flex-direction: column;
+    }
+    .container > img{
+        width: 120%;
+    }
+    #leaderboard-container{
+        width: 500px;
     }
     .leaderboard-top{
         display: flex;
         justify-content: center;
         align-items: center;
         flex-direction: column;
+    }
+}
+@media screen and (max-width: 450px){
+    #leaderboard-container{
+        width: 250px;
+    }
+    .leaderboard-top{
+        margin-top: 30px;
+    }
+    #welcome-text{
+        display: none;
+    }
+    .leaderboard-title{
+        font-size: 30px;
+    }
+    .leaderboard-first-box{
+        font-size: 10px;
+    }
+    .leaderboard-box{
+        font-size: 10px;
     }
 }
