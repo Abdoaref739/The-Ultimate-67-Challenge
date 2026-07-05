@@ -7,6 +7,28 @@
     <link rel="stylesheet" href="spam.css">
 </head>
 <body>
+<div class="main-container">
+    <div class="container">
+    <img src="./image1.png" id="img">
+    <button id="btn">click</button>
+    </div>
+
+
+
+<div id="leaderboard-container">
+    <div class="leaderboard-top">
+    <div class="score-box">
+        <span id="score">0</span>
+    </div>
+    <div class="login-options">
+        <button class="signin-button">Sign in first</button>
+    </div>
+    </div>
+    <h2 id="welcome-text"></h2>
+</div>
+
+
+
     <div class="signin-container">
         <div class="blur">
             <div class="login-box">
@@ -16,17 +38,14 @@
             </div>
         </div>
     </div>
-    <div class="container">
-    <img src="./image1.png" id="img">
-    <button id="btn">click</button>
     </div>
-    <div class="score-box">
-    <span id="score">0</span>
-    </div>
-    <div class="login-options">
-    <button class="signin-button">Sign in first</button>
-    <h2 id="welcome-text"></h2>
-    </div>
+
+
+
+
+
+
+
 
     <script>
         let btn = document.getElementById("btn");
@@ -109,6 +128,34 @@
             sendNameBtn.style.display = "block";
 
         }
+
+
+
+        let container = document.getElementById("container");
+        let leaderBoardContainer = document.getElementById("leaderboard-container");
+        let nameSpan = document.querySelector(".name");
+        let scoreSpan = document.querySelector(".score");
+        async function getLeaderBoardData(){
+        let response = await fetch("http://localhost:3000/leaderboard"); 
+        let data = await response.json();
+        console.log(data)
+            for(i = 0; i < data.length; i++){
+        let box = document.createElement("div");
+        let nameSpan = document.createElement("h1");
+        let scoreSpan = document.createElement("span");
+
+        box.classList.add("leaderboard-box");
+
+        leaderBoardContainer.appendChild(box)
+        box.appendChild(nameSpan)
+        box.appendChild(scoreSpan)
+
+        nameSpan.innerHTML = data[i].username;
+        scoreSpan.innerHTML = data[i].score;
+        }
+        
+    }
+        getLeaderBoardData();
     </script>
 </body>
 </html>
