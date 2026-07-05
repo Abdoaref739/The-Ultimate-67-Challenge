@@ -130,15 +130,16 @@
         }
 
 
-
         let container = document.getElementById("container");
         let leaderBoardContainer = document.getElementById("leaderboard-container");
         let nameSpan = document.querySelector(".name");
         let scoreSpan = document.querySelector(".score");
+
         async function getLeaderBoardData(){
         let response = await fetch("http://localhost:3000/leaderboard"); 
         let data = await response.json();
         console.log(data)
+        
             for(i = 0; i < data.length; i++){
         let box = document.createElement("div");
         let nameSpan = document.createElement("h1");
@@ -155,7 +156,9 @@
         }
         
     }
+    
         getLeaderBoardData();
+    
     </script>
 </body>
 </html>

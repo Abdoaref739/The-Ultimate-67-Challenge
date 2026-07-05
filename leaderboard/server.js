@@ -25,7 +25,6 @@ app.post("/", (req, res) =>{
 });
 
 
-
 app.get("/leaderboard", (req, res) =>{
     console.log("Leaderboard called");
         leaderboard.sort((a, b) =>{
@@ -33,6 +32,7 @@ app.get("/leaderboard", (req, res) =>{
     });
     res.json(leaderboard);
 })
+
 
 //server start
 app.listen(3000, () => {

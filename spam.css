@@ -105,7 +105,7 @@ body{
     box-shadow: 2px 3px 0 black;
     background-color: aliceblue;
     cursor: pointer;
-    margin-left: 50px;
+    margin-left: 150px;
 }
 
 .signin-button:active{
@@ -130,7 +130,6 @@ body{
     width: 50%;
     height: 40%;
     margin-top: 50px;
-    background-color: blue;
     margin-left: 2%;
 }
 .container > img{
@@ -141,16 +140,22 @@ body{
 }
 #btn{
     width: 40%;
-    height: 50px;
+    height: fit-content;
     margin-top: 30px;
     background-color: aliceblue;
     border: 3px solid black;
-    box-shadow: 0px 5px 0 black;
-    border-radius: 15px;
+    box-shadow: 5px 5px 0 black;
+    border-radius: 10px;
     color: black;
-    font-size: 40px;
-    font-family: "TextFont2", sans-serif;
+    font-size: 38px;
+    font-family: "TextFont", sans-serif;
     cursor: pointer;
+}
+#btn:hover{
+    transform: scale(102%);
+}
+#btn:active{
+    box-shadow: 1 1 0 black;
 }
 .score-box{
     position: absolute;
@@ -169,11 +174,10 @@ body{
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    width: 40%;
+    width: fit-content;
     height: fit-content;
     margin-left: 50px;
-    padding-top: 50px;
-    padding-bottom: 50px;
+    padding: 50px;
     margin-top: 50px;
     box-shadow: 5px 7px 0 black;
     border: 3px solid black;
@@ -194,4 +198,9 @@ body{
     display: flex;
     align-items: center;
     flex-direction: row;
+}
+@media screen and (max-width: 950px){
+    .main-container{
+        flex-direction: column;
+    }
 }
