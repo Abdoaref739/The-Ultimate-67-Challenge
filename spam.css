@@ -207,7 +207,7 @@ body{
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    margin-bottom: 0px;
+    margin-top: 150px;
 }
 .leaderboard-top > div {
     display: flex;

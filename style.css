@@ -10,6 +10,10 @@
     font-family: "TextFont2";
     src: url("./Super\ Warming.ttf");
 }
+@font-face {
+    font-family: "TextFont3";
+    src: url("./SHARPIN.otf");
+}
 body{
     display: flex;
     justify-content: center;
@@ -43,8 +47,8 @@ button{
     box-shadow: 0px 5px 0 black;
     border-radius: 15px;
     color: black;
-    font-size: 30px;
-    font-family: "TextFont", sans-serif;
+    font-size: 18px;
+    font-family: "TextFont3", sans-serif;
     cursor: pointer;
     margin-top: 20px;
 }

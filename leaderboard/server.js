@@ -18,7 +18,9 @@ app.post("/", (req, res) =>{
     
     let player = leaderboard.find(p => p.username === username);
     if(player){
+        if(score > player.score){
         player.score = score;
+        }
     }else if(!player){
     leaderboard.push({username: req.body.username, score: req.body.score});
     }

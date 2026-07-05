@@ -5,11 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="spam.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
 <div class="main-container">
     <div class="container">
     <img src="./image1.png" id="img">
+    <audio src="./part-one.mp3" id="part-one-audio"></audio>
+    <audio src="./part-two.mp3" id="part-two-audio"></audio>
     <button id="btn">click</button>
     </div>
 
@@ -26,7 +29,7 @@
             <button class="signin-button">Sign in first</button>
         </div>
     </div>
-    <h1 class="leaderboard-title">Leaderboard!</h1>
+    <h1 class="leaderboard-title"> <i class="fa-solid fa-ranking-star"></i> Leaderboard!</h1>
     </div>
 </div>
 
@@ -46,14 +49,12 @@
 
 
 
-
-
-
-
     <script>
         let btn = document.getElementById("btn");
         let img = document.getElementById("img");
         let gameScore = document.getElementById("score");
+        let partOneSound = document.getElementById("part-one-audio");
+        let partTwoSound = document.getElementById("part-two-audio");
         let name;
         let image = 1;
         let score = 0;
@@ -61,9 +62,11 @@
             if(image == 1){
                 img.setAttribute("src", "./image1.png");
                 image = 2;
+                partOneSound.play();
             }else if(image == 2){
                 img.setAttribute("src", "./image2.png");
                 image = 1;
+                partTwoSound.play();
             }
             score++;
             gameScore.innerHTML = score;
@@ -134,8 +137,6 @@
             sendNameBtn.style.display = "block";
 
         }
-
-
         let container = document.getElementById("container");
         let leaderBoardContainer = document.getElementById("leaderboard-container");
         let nameSpan = document.querySelector(".name");
@@ -159,7 +160,7 @@
         firstBox.appendChild(firstScoreSpan)
 
 
-        firstNameSpan.innerHTML = data[0].username;
+        firstNameSpan.innerHTML = `<i class="fa-solid fa-crown"></i> ${data[0].username}`;
         firstScoreSpan.innerHTML = data[0].score;
 
             for(i = 1; i < data.length; i++){
