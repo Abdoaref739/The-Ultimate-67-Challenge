@@ -15,6 +15,7 @@ app.post("/", (req, res) =>{
         username: req.body.username,
         score: req.body.score
     });
+    
     let player = leaderboard.find(p => p.username === username);
     if(player){
         player.score = score;
@@ -27,7 +28,10 @@ app.post("/", (req, res) =>{
 
 app.get("/leaderboard", (req, res) =>{
     console.log("Leaderboard called");
-    res.json(leaderboard)
+        leaderboard.sort((a, b) =>{
+        return b.score - a.score;
+    });
+    res.json(leaderboard);
 })
 
 //server start
@@ -35,5 +39,3 @@ app.listen(3000, () => {
     console.log("server worked")
     console.log(leaderboard)
 })
-
-const Player = require("./models/Player");

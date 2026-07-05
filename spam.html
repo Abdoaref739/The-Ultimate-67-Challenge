@@ -48,7 +48,6 @@
             getData();
         });
 
-
         let signedIn = false;
         let signInBtn = document.querySelector(".signin-button");
         let signInContainer = document.querySelector(".signin-container");
@@ -75,6 +74,7 @@
                 })
 
             })
+            
             data = await response.json();
             console.log(data)
         }
@@ -83,13 +83,12 @@
         let nameInput = document.getElementById("name-input");
         let welcomeText = document.getElementById("welcome-text");
         let data;
+        
         sendNameBtn.addEventListener("click", () =>{
             name = nameInput.value;
-
             if(data && data.username == nameInput.value){
                 alert("This name is already in use!")
             }
-            if(data && data.username !== nameInput.value && nameInput.value !== ""){
                 localStorage.setItem("name", name)
                 signInBtn.innerHTML = "Signed!";
                 signInBtn.disabled = true;
@@ -97,7 +96,6 @@
                 signInContainer.style.display = "none";
                 welcomeText.innerHTML = `Welcome, ${name}`;
 
-            }
         });
         let storedName = localStorage.getItem("name");
         if(storedName){
