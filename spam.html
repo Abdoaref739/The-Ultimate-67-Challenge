@@ -17,14 +17,17 @@
 
 <div id="leaderboard-container">
     <div class="leaderboard-top">
-    <div class="score-box">
-        <span id="score">0</span>
+    <div>
+        <h2 id="welcome-text"></h2>
+        <div class="score-box">
+            <span id="score">0</span>
+        </div>
+        <div class="login-options">
+            <button class="signin-button">Sign in first</button>
+        </div>
     </div>
-    <div class="login-options">
-        <button class="signin-button">Sign in first</button>
+    <h1 class="leaderboard-title">Leaderboard!</h1>
     </div>
-    </div>
-    <h2 id="welcome-text"></h2>
 </div>
 
 
@@ -102,6 +105,9 @@
         let nameInput = document.getElementById("name-input");
         let welcomeText = document.getElementById("welcome-text");
         let data;
+
+
+        
         
         sendNameBtn.addEventListener("click", () =>{
             name = nameInput.value;
@@ -135,17 +141,34 @@
         let nameSpan = document.querySelector(".name");
         let scoreSpan = document.querySelector(".score");
 
+
+
+
         async function getLeaderBoardData(){
         let response = await fetch("http://localhost:3000/leaderboard"); 
         let data = await response.json();
         console.log(data)
+        let firstBox = document.createElement("div");
         
-            for(i = 0; i < data.length; i++){
+        
+        let firstNameSpan = document.createElement("h1");
+        let firstScoreSpan = document.createElement("span");
+
+        leaderBoardContainer.appendChild(firstBox)
+        firstBox.appendChild(firstNameSpan)
+        firstBox.appendChild(firstScoreSpan)
+
+
+        firstNameSpan.innerHTML = data[0].username;
+        firstScoreSpan.innerHTML = data[0].score;
+
+            for(i = 1; i < data.length; i++){
         let box = document.createElement("div");
         let nameSpan = document.createElement("h1");
         let scoreSpan = document.createElement("span");
 
         box.classList.add("leaderboard-box");
+        firstBox.classList.add("leaderboard-first-box")
 
         leaderBoardContainer.appendChild(box)
         box.appendChild(nameSpan)
@@ -153,6 +176,8 @@
 
         nameSpan.innerHTML = data[i].username;
         scoreSpan.innerHTML = data[i].score;
+        
+        
         }
         
     }
